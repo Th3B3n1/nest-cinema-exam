@@ -26,13 +26,14 @@ export class AppController {
   @Post("/reserve")
   postReservation(@Body() body: Reservation, @Res() res: Response)
   {
+    
     if (body != undefined)
     {
       if (body.firstName.length > 0 && body.lastName.length > 0)
       {
         if (body.emailAddress.length > 0)
         {
-          if ("[A-Za-z0-9]+@[a-z]+.[a-z]".match(body.emailAddress))
+          if (/[A-Za-z0-9]+@[a-z]+.[a-z]/.test(body.emailAddress))
           {
             if (body.dateTime.length > 0)
             {
